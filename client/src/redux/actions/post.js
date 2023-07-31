@@ -12,7 +12,7 @@ export const getPosts = (query) => async (dispatch) => {
     dispatch({ type: "GET_POSTS", payload: responseData });
     // toast.success("Posts fetched succesfully");
   } catch (error) {
-    toast.error(error.response.data.message);
+    // toast.error(error.response.data.message);
     console.log(error);
   }
 };

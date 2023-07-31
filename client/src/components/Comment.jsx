@@ -42,7 +42,7 @@ const Comment = ({ comments, postUser, setCommentState }) => {
                 <img
                   className="h-8 w-8 rounded-full object-cover"
                   src={
-                    commenter.profilePicture ||
+                    commenter?.profilePicture ||
                     "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
                   }
                   alt="user"
@@ -50,11 +50,11 @@ const Comment = ({ comments, postUser, setCommentState }) => {
               </a>
             </div>
             <p className="cursor-pointer font-bold ml-2 w-full group">
-              <a className="">{commenter.firstName}</a>
+              <a className="">{commenter?.firstName}</a>
               <p className="flex items-center relative text-gray-700 font-medium ml-1">
                 {commentText}
                 {user &&
-                (commenter._id === user.id ||
+                (commenter?._id === user.id ||
                   user.role === 1 ||
                   postUser === user.id) ? (
                   <>

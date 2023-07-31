@@ -45,9 +45,9 @@ const Gallery = () => {
     });
   };
   useEffect(() => {
-    if (page > 1) {
-      fetchData();
-    }
+    // if (page > 1) {
+    fetchData();
+    // }
   }, [page]);
 
   useEffect(() => {
