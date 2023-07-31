@@ -12,7 +12,7 @@ import commentRoutes from "./routes/comment";
 // import FormData from "form-data";
 // import axios from "axios";
 const app = express();
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.SERVER_PORT || 8080;
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,

@@ -7,11 +7,16 @@ export const createPost = async (req, res) => {
   try {
     const file = req.file;
     const uploadIoDoc = await axios.post(
-      `https://api.upload.io/v2/accounts/${process.env.UPLOAD_IO_ACCOUNT_ID}/uploads/binary`,
+      `https://api.upload.io/v2/accounts/${
+        process.env.UPLOAD_IO_ACCOUNT_ID || "W142i6B"
+      }/uploads/binary`,
       file.buffer,
       {
         headers: {
-          Authorization: `Bearer ${process.env.UPLOAD_IO_API_KEY}`,
+          Authorization: `Bearer ${
+            process.env.UPLOAD_IO_API_KEY ||
+            "public_W142i6BD83frV8iiMMihkhdd9wtR"
+          }`,
         },
       }
     );

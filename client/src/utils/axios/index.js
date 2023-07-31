@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "../../redux/store";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://13.232.64.82:8080/",
   timeout: 5000,
   headers: {},
 });
