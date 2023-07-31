@@ -1,10 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../redux/actions/auth";
+import { useContext } from "react";
+
+import { SearchContext } from "../components/contexts/SearchContext";
 const Navbar = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleLogout = () => dispatch(logoutUser());
+  const { setSearch } = useContext(SearchContext);
+
   return (
     <nav
       className="sticky top-0 z-[100] flex w-full flex-nowrap items-center justify-between bg-neutral-100 py-3 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:flex-wrap lg:justify-start"
@@ -38,7 +43,7 @@ const Navbar = () => {
           </span>
         </button>
         <div
-          className="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+          className="flex justify-between items-center w-[80%]"
           id="navbarSupportedContent"
           data-te-collapse-item=""
         >
@@ -52,40 +57,48 @@ const Navbar = () => {
               loading="lazy"
               className="w-10"
             />
+            <h1 className="mx-2 text-transparent text-3xl font-bold bg-clip-text bg-gradient-to-r to-pink-600 from-yellow-400">
+              PinCraft
+            </h1>
           </Link>
           {/* Left links */}
-          <ul
-            className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
-            data-te-navbar-nav-ref=""
-          >
-            <li className="lg:p-2" data-te-nav-item-ref="">
-              <Link
-                className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90"
-                to="/dashboard"
-                data-te-nav-link-ref=""
-              >
-                Dashboard
-              </Link>
-            </li>
-            <li className="lg:p-2" data-te-nav-item-ref="">
-              <Link
-                className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90"
-                to="/team"
-                data-te-nav-link-ref=""
-              >
-                Team
-              </Link>
-            </li>
-            <li className="lg:p-2" data-te-nav-item-ref="">
-              <Link
-                className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90"
-                to="/project"
-                data-te-nav-link-ref=""
-              >
-                Projects
-              </Link>
-            </li>
-          </ul>
+
+          <div className="basis-[60%] ">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search Mockups, Logos..."
+                required=""
+                onChange={(e) => setSearch(e.currentTarget.value)}
+              />
+            </div>
+          </div>
+
           {/* Left links */}
         </div>
 

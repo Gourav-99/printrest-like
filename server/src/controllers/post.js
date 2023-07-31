@@ -40,7 +40,24 @@ export const createPost = async (req, res) => {
 export const getPosts = async (req, res) => {
   try {
     console.log(req.query);
-    const { _limit, _page } = req.query;
+    const { _limit = 10, _page = 1, _search } = req.query;
+
+    if (_search && _search.length > 0) {
+      logger.warn("searching ", _search, _search.length);
+      const posts = await Post.find({
+        title: { $regex: _search, $options: "i" },
+      })
+        // await Post.find({$text: {$search: _search}})
+        .limit(_limit)
+        .skip((_page - 1) * 10)
+        .sort({ createdAt: -1 })
+        .populate("user");
+      return res.status(201).json({
+        message: "Posts fetched successfully",
+        success: true,
+        data: posts,
+      });
+    }
     const offset = (_page - 1) * 10;
     const posts = await Post.find()
       .limit(_limit)
