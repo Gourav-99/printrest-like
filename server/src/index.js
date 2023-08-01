@@ -14,7 +14,7 @@ import commentRoutes from "./routes/comment";
 const app = express();
 const PORT = process.env.SERVER_PORT || 8080;
 const corsOptions = {
-  origin: "http://13.127.143.210:3000",
+  origin: "http://65.2.9.201:3000",
   credentials: true,
 };
 connectDB();
