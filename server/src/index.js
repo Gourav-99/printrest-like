@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // app.get("/seed-db", async (req, res) => {
-//   const imageCount = 10;
+//   const imageCount = 45;
 //   const imageWidths = Array.from(
 //     { length: imageCount },
 //     () => Math.floor(Math.random() * 1000) + 200
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 //   );
 
 //   const dataArr = [];
-//   for (let i = 0; i < imageCount; i++) {
+//   for (let i = 31; i < imageCount; i++) {
 //     const response = await axios.get(imageUrls[i], {
 //       responseType: "arraybuffer",
 //     });

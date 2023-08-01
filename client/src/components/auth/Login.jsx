@@ -16,19 +16,21 @@ const Login = () => {
     }
   };
   return (
-    <section className="bg-neutral-200 dark:bg-neutral-700 ">
+    <section className="bg-neutral-200 dark:bg-neutral-700">
       <div className="container h-full px-6 m-auto py-4">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center">
-          <div className="shrink-0 grow-0 basis-auto lg:w-full xl:w-11/12">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-2">
+          <div className="col-span-1 lg:col-span-2">
             <div className="block rounded-lg bg-white text-neutral-800 shadow-2xl dark:bg-neutral-800 dark:text-white">
               <div className="p-6 md:p-12">
                 <div className="flex flex-wrap justify-center">
-                  <div className=" flex shrink-0 grow-0 basis-auto items-center md:w-10/12  lg:w-6/12 xl:w-7/12">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.png"
-                      className=""
-                      alt="Sample"
-                    />
+                  <div className=" flex shrink-0 grow-0 basis-auto items-center  md:w-10/12  lg:w-6/12 xl:w-7/12">
+                    <div className="hidden lg:block col-span-1 lg:col-span-2 flex items-center justify-center">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.png"
+                        alt="Sample"
+                        className="mx-auto max-w-full"
+                      />
+                    </div>
                   </div>
                   <div className=" shrink-0 grow-0 basis-auto md:w-10/12 lg: lg:w-6/12 xl:w-5/12">
                     <p className="mx-1 mb-12 mt-6 text-center text-yellow-500  text-3xl font-bold md:mx-6">

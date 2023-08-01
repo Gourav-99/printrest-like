@@ -6,7 +6,7 @@ export const addComment = async (req, res) => {
   try {
     const { commentText } = req.body;
     const user = req.user.id;
-    console.log(user);
+    // console.log(user);
     // if (!user) {
     //   logger.error(error);
     //   return res.status(400).json({

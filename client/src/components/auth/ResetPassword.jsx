@@ -30,7 +30,7 @@ const ResetPassword = () => {
             <div className="block rounded-lg bg-white text-neutral-800 shadow-2xl dark:bg-neutral-800 dark:text-white">
               <div className="p-6 md:p-12">
                 <div className="flex flex-wrap justify-center">
-                  <div className=" flex shrink-0 grow-0 basis-auto items-center md:w-10/12  lg:w-6/12 xl:w-7/12">
+                  <div className="hidden lg:flex shrink-0 grow-0 basis-auto items-center md:w-10/12  lg:w-6/12 xl:w-7/12">
                     <img
                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.png"
                       className=""
