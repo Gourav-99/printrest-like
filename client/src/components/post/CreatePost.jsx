@@ -26,9 +26,7 @@ const CreatePost = () => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
-    const res = await axios.post("/post", formData, {
-      withCredentials: true,
-    });
+    const res = await axios.post("/post", formData);
     navigate("/");
     toast.success("Post created successfully");
   };

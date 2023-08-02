@@ -27,13 +27,7 @@ const EditPost = () => {
   }, []);
   const handlePostEdit = async (e) => {
     e.preventDefault();
-    const res = await axios.patch(
-      `/post/${postId}`,
-      { title, description },
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.patch(`/post/${postId}`, { title, description });
     navigate(`/post/${postId}`);
     toast.success("Post Updated successfully");
   };

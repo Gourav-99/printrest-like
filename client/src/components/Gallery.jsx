@@ -75,7 +75,7 @@ const Gallery = () => {
         <Masonry>
           {posts.map(
             ({ title, _id: postId, image, user: postOwner, link }, index) => (
-              <div key={postId} className="relative m-1">
+              <div key={postId + index} className="relative m-1">
                 <img
                   ref={index === posts.length - 1 ? lastImageRef : null}
                   className="object-cover rounded-sm m-2 "
