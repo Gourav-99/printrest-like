@@ -9,9 +9,9 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth";
 import postRoutes from "./routes/post";
 import commentRoutes from "./routes/comment";
-import session from "express-session";
-import passport from "./utils/passport";
-import oauthRoutes from "./routes/social-auth";
+// import session from "express-session";
+// import passport from "./utils/passport";
+// import oauthRoutes from "./routes/social-auth";
 // import FormData from "form-data";
 // import axios from "axios";
 const app = express();
@@ -24,17 +24,17 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  session({
-    secret: "access_token", // Replace with a secure random key for session encryption
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+// app.use(
+//   session({
+//     secret: "access_token", // Replace with a secure random key for session encryption
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
 app.use(morganMiddleware);
-app.use(passport.initialize());
-app.use(passport.session());
-app.use("/oauth", oauthRoutes);
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use("/oauth", oauthRoutes);
 app.use("/auth", authRoutes);
 app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
