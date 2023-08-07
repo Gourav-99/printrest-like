@@ -65,7 +65,6 @@ export const signUp = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password);
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
@@ -87,6 +86,7 @@ export const login = async (req, res) => {
       email: user.email,
       initials: user.initials,
       fullName: user.fullName,
+      profilePicture: user.profilePicture,
       role: user.role,
     };
     const token = await generateToken(userData);
@@ -144,7 +144,7 @@ export const changePassword = async (req, res) => {
   try {
     const { token } = req.params;
     const { password } = req.body;
-    console.log(password);
+
     const decoded = await verifyResetToken(token);
     if (!decoded) {
       return res.status(400).json({

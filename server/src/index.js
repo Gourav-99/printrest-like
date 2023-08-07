@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+
 dotenv.config();
 import cors from "cors";
 import { connectDB } from "./utils/db.utils";
@@ -8,23 +9,36 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth";
 import postRoutes from "./routes/post";
 import commentRoutes from "./routes/comment";
-
+import session from "express-session";
+import passport from "./utils/passport";
+import oauthRoutes from "./routes/social-auth";
 // import FormData from "form-data";
 // import axios from "axios";
 const app = express();
 const PORT = process.env.SERVER_PORT || 8080;
+connectDB();
 const corsOptions = {
-  origin: "http://13.126.45.219:3000",
+  origin: "http://localhost:3000",
   credentials: true,
 };
-connectDB();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  session({
+    secret: "access_token", // Replace with a secure random key for session encryption
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(morganMiddleware);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use("/oauth", oauthRoutes);
 app.use("/auth", authRoutes);
 app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
+
 app.get("/", (req, res) => {
   res.send("hello");
 });

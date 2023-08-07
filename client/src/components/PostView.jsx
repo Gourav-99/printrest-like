@@ -33,6 +33,7 @@ const PostView = () => {
       e.preventDefault();
       const res = await axios.post(`/comment/${postId}`, { commentText });
       setCommentState(res.data);
+      setCommentText("");
     } catch (error) {
       console.log(error);
       toast.error("Unauthorised !SignIn to comment");
@@ -51,7 +52,7 @@ const PostView = () => {
       {post && (
         <div className="bg-white p-1 overflow-hidden shadow-none flex flex-col md:flex-row">
           <div className="flex flex-col md:flex-none md:w-2/3 p-2">
-            <div className="aspect-w-4 aspect-h-3">
+            <div className="aspect-w-4 aspect-h-3 md:w-full md:h-[500px]">
               {post?.image && (
                 <img
                   className="w-full h-full object-contain"
@@ -106,6 +107,7 @@ const PostView = () => {
                   autoCorrect="off"
                   style={{ height: 36 }}
                   defaultValue={""}
+                  value={commentText}
                   onChange={(e) => setCommentText(e.currentTarget.value)}
                 />
                 <button

@@ -14,7 +14,7 @@ const Navbar = () => {
   useEffect(() => {
     setRoute(location.pathname);
   });
-  console.log(route);
+
   return (
     <nav className="sticky top-0 z-[100] flex w-full items-center justify-between bg-neutral-100 py-3 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:flex-wrap lg:justify-start">
       <div className="container flex items-center justify-between  px-4 mx-auto">
@@ -111,9 +111,17 @@ const Navbar = () => {
                   aria-expanded="false"
                 >
                   <span className="bg-yellow-500 rounded-full h-8 w-8 flex items-center justify-center">
-                    <span className="text-white font-medium uppercase">
-                      {auth.user.initials}
-                    </span>
+                    {auth.user.profilePicture ? (
+                      <img
+                        className="rounded-full"
+                        src={auth.user.profilePicture}
+                        alt="Profile"
+                      />
+                    ) : (
+                      <span className="text-white font-medium uppercase">
+                        {auth.user.initials}
+                      </span>
+                    )}
                   </span>
                 </Link>
               </div>
